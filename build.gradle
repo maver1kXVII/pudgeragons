@@ -1,0 +1,46 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'jacoco'
+
+group 'ru.pecanif'
+version '0.0.1'
+sourceCompatibility = 1.8
+
+mainClassName = 'Main'
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName,
+                'Implementation-Title': 'Pudgers & Dragons',
+                'Implementation-Version': version
+    }
+}
+
+run {
+    if(project.hasProperty('appArgs')){
+        args(appArgs.split(','))
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.3"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+}
