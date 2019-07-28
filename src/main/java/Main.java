@@ -10,10 +10,10 @@ public class Main {
     public static void main(String[] argv) {
         System.out.println("Pudgers & Dragons v0.0.1! \n");
         List<Creature> allies = new ArrayList<>();
-        allies.add(new Player(200, 10));
+        allies.add(new Player(180, 10));
         List<Creature> enemies = new ArrayList<>();
         enemies.add(new Dragon(50, 5));
-        enemies.add(new Dragon(125, 10));
+        enemies.add(new Dragon(85, 8));
 
         Battle testBattle = new Battle(allies, enemies);
         testBattle.start();

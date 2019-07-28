@@ -29,14 +29,14 @@ public class Battle {
         String linePrefix = " • ";
         String stats = "";
         for (Creature dude : party) {
-            stats += linePrefix + dude.toString();
+            stats += linePrefix + dude.toString() + "\n";
         }
         return stats;
     }
 
     public void start() {
         while (isPartyAlive(allies) && isPartyAlive(enemies)) {
-            System.out.println("Ход " + turn);
+            System.out.println("\n Ход " + turn);
             System.out.println("Твой отряд: \n" + getPartyState(allies));
             System.out.println("Отряд противника: \n" + getPartyState(enemies));
             allyTurn();
@@ -50,7 +50,8 @@ public class Battle {
         }
     }
 
-    public void allyTurn() {
+    private void allyTurn() {
+        System.out.println("\nВаш ход");
         System.out.println("Выберите противника:");
         for (Creature dude : allies) {
             if (dude.isAlive()) {
@@ -61,7 +62,7 @@ public class Battle {
         }
     }
 
-    public void enemyTurn() {
+    private void enemyTurn() {
         Random rand = new Random();
         Integer n = 0;
         System.out.println("Ходит противник...");
@@ -78,7 +79,7 @@ public class Battle {
         }
     }
 
-    public <T> T inputSelector(List<T> list) {
+    private <T> T inputSelector(List<T> list) {
         try {
             InputStreamReader isr = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(isr);

@@ -34,6 +34,9 @@ public abstract class Creature {
         // Armor stuff will probably go somewhere there
         if (takenHP > 0 && isAlive()) {
             this.HP -= takenHP;
+            if (HP < 0) {
+                HP = 0;
+            }
             return true;
         } else {
             return false;
